@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ink: #0e0e0c;
+    --ink-soft: #1c1c18;
+    --ink-muted: #3a3a34;
+    --ink-faint: #7a7a70;
+    --paper: #f5f4ef;
+    --paper-warm: #ede9e0;
+    --lime: #c8f53a;
+    --lime-dark: #a8d020;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-feature-settings: 'ss01', 'cv01';
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--lime); color: var(--ink); }
+}
+
+@layer components {
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-body font-medium text-sm bg-ink text-lime transition-all duration-150;
+    @apply hover:bg-ink-soft active:scale-[0.98];
+  }
+
+  .btn-lime {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-body font-medium text-sm bg-lime text-ink transition-all duration-150;
+    @apply hover:bg-lime-dark active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-body font-medium text-sm border border-ink/20 text-ink bg-transparent transition-all duration-150;
+    @apply hover:border-ink/40 hover:bg-paper-warm active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-body text-sm text-ink/60 transition-all duration-150;
+    @apply hover:text-ink hover:bg-ink/5;
+  }
+
+  /* ── Form fields ── */
+  .field {
+    @apply w-full px-4 py-3 rounded-xl border border-ink/15 bg-white text-ink text-sm font-body placeholder:text-ink/30 transition-all duration-150 outline-none;
+    @apply focus:border-ink/40 focus:ring-2 focus:ring-ink/8;
+  }
+
+  .field-error {
+    @apply border-red/50 focus:border-red/70 focus:ring-red/10;
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-white border border-ink/8 rounded-2xl p-6;
+  }
+
+  .card-ink {
+    @apply bg-ink text-paper border border-white/5 rounded-2xl p-6;
+  }
+
+  /* ── Status badges ── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-scanning { @apply bg-lime/25 text-ink; }
+  .badge-slot_found { @apply bg-amber/20 text-amber; }
+  .badge-booked { @apply bg-green/15 text-green; }
+  .badge-pending { @apply bg-ink/8 text-ink/60; }
+  .badge-failed { @apply bg-red/15 text-red; }
+  .badge-cancelled { @apply bg-ink/8 text-ink/40; }
+
+  /* ── Section ── */
+  .section { @apply max-w-5xl mx-auto px-6 py-20; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+
+  /* Animate once on load */
+  .animate-once { animation-fill-mode: both; }
+}
