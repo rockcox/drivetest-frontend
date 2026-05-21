@@ -2,97 +2,82 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'AppointMe — Skip the Queue on Any Government Appointment',
+  title: 'AppointMe — Skip the Queue on Any Government Appointment in Canada',
+  description: 'Automated booking for government appointments across Canada. Driver\'s tests, passports, citizenship — we monitor 24/7 and book the moment a slot opens. Pay only when we succeed.',
 }
+
+const provinces = [
+  { code: 'bc', name: 'British Columbia', short: 'BC', flag: '🏔️' },
+  { code: 'on', name: 'Ontario', short: 'ON', flag: '🍁' },
+  { code: 'ab', name: 'Alberta', short: 'AB', flag: '🌾' },
+  { code: 'qc', name: 'Québec', short: 'QC', flag: '⚜️' },
+  { code: 'ns', name: 'Nova Scotia', short: 'NS', flag: '🦞' },
+  { code: 'mb', name: 'Manitoba', short: 'MB', flag: '🦬' },
+]
 
 const services = [
   {
-    slug: 'drivetest',
+    slug: 'drivers-test',
     icon: '🚗',
-    name: 'Driver\'s Test',
-    tagline: 'G, G2, M, M2 road tests',
-    description: 'We scan DriveTest.ca 24/7 for cancellations and book your Ontario road test the moment a slot opens.',
-    price: 'From $49',
-    badge: 'Live',
-    badgeColor: 'bg-lime text-ink',
-    available: true,
-    province: 'Ontario',
+    name: "Driver's Test",
+    description: 'Road test booking for any licence class',
+    provinces: {
+      bc: { status: 'early-access', label: 'Early access', price: 'From $49' },
+      on: { status: 'live', label: 'Live', price: 'From $49' },
+      ab: { status: 'coming-soon', label: 'Coming soon', price: null },
+      qc: { status: 'coming-soon', label: 'Coming soon', price: null },
+      ns: { status: 'coming-soon', label: 'Coming soon', price: null },
+      mb: { status: 'coming-soon', label: 'Coming soon', price: null },
+    }
   },
   {
     slug: 'passport',
     icon: '📘',
     name: 'Passport',
-    tagline: 'Renewal & first-time applications',
-    description: 'Skip the months-long wait for a passport appointment at Service Canada or Passport Canada offices.',
-    price: 'From $59',
-    badge: 'Coming soon',
-    badgeColor: 'bg-ink/10 text-ink/50',
-    available: false,
-    province: 'Canada-wide',
+    description: 'Renewal & first-time applications',
+    provinces: {
+      bc: { status: 'coming-soon', label: 'Coming soon', price: null },
+      on: { status: 'coming-soon', label: 'Coming soon', price: null },
+      ab: { status: 'coming-soon', label: 'Coming soon', price: null },
+      qc: { status: 'coming-soon', label: 'Coming soon', price: null },
+      ns: { status: 'coming-soon', label: 'Coming soon', price: null },
+      mb: { status: 'coming-soon', label: 'Coming soon', price: null },
+    }
   },
   {
     slug: 'citizenship',
     icon: '🍁',
     name: 'Citizenship Test',
-    tagline: 'IRCC ceremony & test slots',
-    description: 'Automatically grab IRCC citizenship test and ceremony appointment slots when they become available.',
-    price: 'From $49',
-    badge: 'Coming soon',
-    badgeColor: 'bg-ink/10 text-ink/50',
-    available: false,
-    province: 'Canada-wide',
-  },
-  {
-    slug: 'health-card',
-    icon: '🏥',
-    name: 'Health Card',
-    tagline: 'OHIP & provincial health cards',
-    description: 'Book ServiceOntario health card appointments without the wait. New cards, renewals, and replacements.',
-    price: 'From $29',
-    badge: 'Coming soon',
-    badgeColor: 'bg-ink/10 text-ink/50',
-    available: false,
-    province: 'Ontario',
-  },
-  {
-    slug: 'sin',
-    icon: '🔢',
-    name: 'SIN Appointment',
-    tagline: 'Social Insurance Number',
-    description: 'Get a Service Canada appointment for a new SIN card or replacement without waiting weeks for availability.',
-    price: 'From $29',
-    badge: 'Coming soon',
-    badgeColor: 'bg-ink/10 text-ink/50',
-    available: false,
-    province: 'Canada-wide',
-  },
-  {
-    slug: 'coming-soon',
-    icon: '➕',
-    name: 'More services',
-    tagline: 'Vehicle permits, nexus, study permits...',
-    description: 'We\'re expanding to cover every government appointment Canadians struggle to book. Request a service.',
-    price: null,
-    badge: 'Request',
-    badgeColor: 'bg-ink/10 text-ink/50',
-    available: false,
-    province: null,
+    description: 'IRCC ceremony & test appointments',
+    provinces: {
+      bc: { status: 'coming-soon', label: 'Coming soon', price: null },
+      on: { status: 'coming-soon', label: 'Coming soon', price: null },
+      ab: { status: 'coming-soon', label: 'Coming soon', price: null },
+      qc: { status: 'coming-soon', label: 'Coming soon', price: null },
+      ns: { status: 'coming-soon', label: 'Coming soon', price: null },
+      mb: { status: 'coming-soon', label: 'Coming soon', price: null },
+    }
   },
 ]
 
-const stats = [
-  { value: '24/7', label: 'Monitoring' },
-  { value: '< 4 min', label: 'Check interval' },
-  { value: '$0', label: 'Upfront cost' },
-  { value: '100%', label: 'Pay on success' },
-]
+type ProvinceCode = 'bc' | 'on' | 'ab' | 'qc' | 'ns' | 'mb'
 
-const steps = [
-  { n: '01', title: 'Pick your service', body: 'Select the type of government appointment you need. Tell us your preferences — location, date range, time of day.' },
-  { n: '02', title: 'We watch 24/7', body: 'Our system checks for openings every few minutes, day and night. You don\'t have to do a thing.' },
-  { n: '03', title: 'Slot found — booked', body: 'The moment a matching cancellation appears, we book it in your name before anyone else can.' },
-  { n: '04', title: 'You only pay if we win', body: 'No slot found? No charge. Our fee is collected only after a confirmed booking lands in your inbox.' },
-]
+function statusStyle(status: string) {
+  if (status === 'live') return 'bg-lime text-ink font-medium'
+  if (status === 'early-access') return 'bg-ink/80 text-lime font-medium'
+  return 'bg-ink/8 text-ink/30'
+}
+
+function cellStyle(status: string) {
+  if (status === 'live') return 'bg-lime/10 border-lime/30 hover:bg-lime/20'
+  if (status === 'early-access') return 'bg-ink/5 border-ink/15 hover:bg-ink/10'
+  return 'bg-white border-ink/8 opacity-50 cursor-default'
+}
+
+function getHref(serviceSlug: string, provinceCode: string, status: string) {
+  if (status === 'coming-soon') return null
+  return `/${serviceSlug}/${provinceCode}`
+}
 
 export default function HomePage() {
   return (
@@ -101,110 +86,106 @@ export default function HomePage() {
       {/* Nav */}
       <nav className="border-b border-ink/8 bg-paper/90 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-          <Link href="/" className="font-display text-xl text-ink tracking-tight">
-            AppointMe
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href="#how-it-works" className="text-sm text-ink/50 hover:text-ink transition-colors hidden sm:block">How it works</Link>
-            <Link href="#services" className="text-sm text-ink/50 hover:text-ink transition-colors hidden sm:block">Services</Link>
-            <Link href="/drivetest" className="btn-primary text-sm px-4 py-2 rounded-lg">
-              Book now →
+          <Link href="/" className="font-display text-xl text-ink tracking-tight">AppointMe</Link>
+          <div className="hidden sm:flex items-center gap-6">
+            <Link href="#how-it-works" className="text-sm text-ink/40 hover:text-ink transition-colors">How it works</Link>
+            <Link href="/drivers-test/bc" className="btn-primary text-sm px-4 py-2 rounded-lg">
+              Vancouver early access →
             </Link>
           </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-20 pb-16">
+      <section className="max-w-6xl mx-auto px-6 pt-20 pb-12">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-lime/30 text-ink text-xs font-medium mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-ink/60 animate-pulse"></span>
-            Driver's test booking live in Ontario
+            BC driver's test · Early access open
           </div>
           <h1 className="font-display text-5xl sm:text-6xl text-ink leading-tight text-balance mb-5">
-            Your government appointment,<br/>
-            <span className="text-ink/40">without the wait.</span>
+            Your government<br />
+            appointment,<br />
+            <span className="text-ink/35">without the wait.</span>
           </h1>
-          <p className="text-lg text-ink/60 max-w-xl leading-relaxed mb-8">
-            We monitor government booking systems around the clock and secure your slot the moment a cancellation appears.
-            Road tests, passports, citizenship — you pay only when we succeed.
+          <p className="text-lg text-ink/55 max-w-xl leading-relaxed mb-8">
+            We monitor government booking systems 24/7 and secure your slot
+            the moment a cancellation appears — across Canada.
+            You only pay when we succeed.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/drivetest" className="btn-lime px-6 py-3 rounded-xl text-base font-medium">
-              Book a driver's test
+            <Link href="/drivers-test/bc" className="btn-lime px-6 py-3 rounded-xl text-base font-medium">
+              Book in Vancouver →
             </Link>
-            <Link href="#services" className="btn-outline px-6 py-3 rounded-xl text-base">
-              See all services
+            <Link href="/drivers-test/on" className="btn-outline px-6 py-3 rounded-xl text-base">
+              Ontario (live)
             </Link>
           </div>
-        </div>
-
-        {/* Stats strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-ink/8 rounded-2xl overflow-hidden mt-14 border border-ink/8">
-          {stats.map(s => (
-            <div key={s.label} className="bg-paper px-6 py-5">
-              <p className="font-display text-3xl text-ink">{s.value}</p>
-              <p className="text-sm text-ink/40 mt-0.5">{s.label}</p>
-            </div>
-          ))}
         </div>
       </section>
 
-      {/* Services grid */}
-      <section id="services" className="max-w-6xl mx-auto px-6 py-16">
-        <div className="mb-10">
-          <p className="text-xs font-medium tracking-widest text-ink/30 uppercase mb-2">Services</p>
-          <h2 className="font-display text-3xl text-ink">What can we book for you?</h2>
+      {/* Service × Province grid */}
+      <section className="max-w-6xl mx-auto px-6 py-14">
+        <div className="mb-8">
+          <p className="text-xs font-medium tracking-widest text-ink/30 uppercase mb-2">Availability by province</p>
+          <h2 className="font-display text-3xl text-ink">Pick your service and province.</h2>
+          <p className="text-ink/40 text-sm mt-2">Live = book now. Early access = join the first wave.</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {services.map(s => (
-            <div key={s.slug} className={`group relative rounded-2xl border p-6 flex flex-col gap-3 transition-all duration-200 ${
-              s.available
-                ? 'bg-ink text-paper border-ink cursor-pointer hover:scale-[1.02] hover:shadow-xl'
-                : 'bg-white border-ink/8 opacity-70'
-            }`}>
-              {/* Badge */}
-              <div className="flex items-start justify-between">
-                <span className={`text-2xl`}>{s.icon}</span>
-                <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${s.badgeColor}`}>
-                  {s.badge}
-                </span>
-              </div>
-
-              <div>
-                <h3 className={`font-display text-xl ${s.available ? 'text-lime' : 'text-ink'}`}>
-                  {s.name}
-                </h3>
-                <p className={`text-sm mt-0.5 ${s.available ? 'text-paper/50' : 'text-ink/40'}`}>
-                  {s.tagline}
-                </p>
-              </div>
-
-              <p className={`text-sm leading-relaxed flex-1 ${s.available ? 'text-paper/70' : 'text-ink/50'}`}>
-                {s.description}
-              </p>
-
-              <div className="flex items-center justify-between mt-1">
-                {s.price && (
-                  <span className={`text-sm font-medium ${s.available ? 'text-lime' : 'text-ink/40'}`}>
-                    {s.price}
-                  </span>
-                )}
-                {s.province && (
-                  <span className={`text-xs px-2 py-0.5 rounded-full ${
-                    s.available ? 'bg-white/10 text-paper/50' : 'bg-ink/5 text-ink/30'
-                  }`}>
-                    {s.province}
-                  </span>
-                )}
-              </div>
-
-              {s.available && (
-                <Link href={`/${s.slug}`} className="absolute inset-0 rounded-2xl" aria-label={`Book ${s.name}`} />
-              )}
-            </div>
-          ))}
+        <div className="overflow-x-auto -mx-6 px-6">
+          <table className="w-full min-w-[640px]">
+            <thead>
+              <tr>
+                <th className="text-left pb-4 pr-6 w-48">
+                  <span className="text-xs font-medium tracking-widest text-ink/25 uppercase">Service</span>
+                </th>
+                {provinces.map(p => (
+                  <th key={p.code} className="pb-4 px-2 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-lg">{p.flag}</span>
+                      <span className="text-xs font-medium text-ink/50">{p.short}</span>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-ink/5">
+              {services.map(service => (
+                <tr key={service.slug}>
+                  <td className="py-4 pr-6">
+                    <div className="flex items-center gap-3">
+                      <span className="text-xl">{service.icon}</span>
+                      <div>
+                        <p className="font-medium text-ink text-sm">{service.name}</p>
+                        <p className="text-xs text-ink/35">{service.description}</p>
+                      </div>
+                    </div>
+                  </td>
+                  {provinces.map(p => {
+                    const cell = service.provinces[p.code as ProvinceCode]
+                    const href = getHref(service.slug, p.code, cell.status)
+                    const content = (
+                      <div className={`rounded-xl border p-2.5 text-center transition-all ${cellStyle(cell.status)}`}>
+                        <span className={`text-xs px-2 py-0.5 rounded-full ${statusStyle(cell.status)}`}>
+                          {cell.label}
+                        </span>
+                        {cell.price && (
+                          <p className="text-xs text-ink/50 mt-1.5">{cell.price}</p>
+                        )}
+                      </div>
+                    )
+                    return (
+                      <td key={p.code} className="py-4 px-2">
+                        {href ? (
+                          <Link href={href} className="block">{content}</Link>
+                        ) : content}
+                      </td>
+                    )
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
@@ -216,29 +197,34 @@ export default function HomePage() {
             <h2 className="font-display text-3xl text-paper">Simple by design.</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map(step => (
+            {[
+              { n: '01', t: 'Pick your service & province', b: 'Select what you need and where you are. Tell us your preferred locations and date range.' },
+              { n: '02', t: 'We scan 24/7', b: 'Our system checks for openings every few minutes. You don\'t have to do a thing.' },
+              { n: '03', t: 'Instant booking', b: 'The moment a slot opens, we book it in your name before anyone else can.' },
+              { n: '04', t: 'Pay only if we win', b: 'No slot found? No charge, ever. Our fee is only collected on a confirmed booking.' },
+            ].map(step => (
               <div key={step.n} className="flex flex-col gap-3">
                 <span className="font-mono text-xs text-lime/60">{step.n}</span>
-                <h3 className="font-display text-xl text-lime">{step.title}</h3>
-                <p className="text-sm text-paper/60 leading-relaxed">{step.body}</p>
+                <h3 className="font-display text-xl text-lime">{step.t}</h3>
+                <p className="text-sm text-paper/55 leading-relaxed">{step.b}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Trust section */}
+      {/* Trust */}
       <section className="max-w-6xl mx-auto px-6 py-20">
         <div className="grid sm:grid-cols-3 gap-6">
           {[
-            { icon: '🔒', title: 'Your data is protected', body: 'Credentials encrypted with AES-256. Deleted the moment your booking is confirmed. We never store card numbers.' },
-            { icon: '💳', title: 'Pay only on success', body: 'No subscription. No upfront fee. Your card is authorized at sign-up and only charged when we deliver a confirmed booking.' },
-            { icon: '🤝', title: 'We act as your agent', body: 'You authorize us to book on your behalf. The appointment is yours — in your name, at your chosen location.' },
+            { icon: '🔒', title: 'Your data stays private', body: 'Credentials encrypted with AES-256 and deleted the moment your booking is confirmed. We never store card numbers.' },
+            { icon: '💳', title: 'Pay only on success', body: 'Your card is secured at sign-up and only charged when we confirm a booking in your name. Cancel free any time before.' },
+            { icon: '🤝', title: 'We act as your agent', body: 'You authorize us to book on your behalf — no different from a concierge. The appointment is yours.' },
           ].map(t => (
             <div key={t.title} className="card">
               <span className="text-2xl mb-3 block">{t.icon}</span>
               <h3 className="font-display text-lg text-ink mb-2">{t.title}</h3>
-              <p className="text-sm text-ink/50 leading-relaxed">{t.body}</p>
+              <p className="text-sm text-ink/45 leading-relaxed">{t.body}</p>
             </div>
           ))}
         </div>
@@ -246,25 +232,34 @@ export default function HomePage() {
 
       {/* CTA */}
       <section className="max-w-6xl mx-auto px-6 pb-20">
-        <div className="bg-ink rounded-3xl p-10 sm:p-14 text-center">
-          <h2 className="font-display text-4xl text-lime mb-4">Ready to stop waiting?</h2>
-          <p className="text-paper/60 mb-8 max-w-md mx-auto">Start with our live driver's test service. More government appointments launching soon across Canada.</p>
-          <Link href="/drivetest" className="btn-lime px-8 py-3.5 rounded-xl text-base font-medium inline-flex">
-            Find my driver's test slot →
-          </Link>
+        <div className="bg-ink rounded-3xl p-10 sm:p-14">
+          <div className="grid sm:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="font-display text-4xl text-lime mb-3">Ready to stop waiting?</h2>
+              <p className="text-paper/50 leading-relaxed">Join the early access list for Vancouver or book right now in Ontario.</p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link href="/drivers-test/bc" className="btn-lime px-6 py-3 rounded-xl text-sm font-medium text-center">
+                Vancouver early access →
+              </Link>
+              <Link href="/drivers-test/on" className="btn-outline px-6 py-3 rounded-xl text-sm text-center border-white/20 text-paper hover:bg-white/10">
+                Ontario — book now
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="border-t border-ink/8 py-10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="font-display text-ink">AppointMe</span>
-            <span className="text-ink/20">·</span>
-            <span className="text-sm text-ink/30">Canada</span>
+          <div className="flex items-center gap-3 text-sm text-ink/30">
+            <span className="font-display text-ink/60">AppointMe</span>
+            <span>·</span>
+            <span>Canada</span>
           </div>
-          <div className="flex gap-6 text-sm text-ink/40">
-            <Link href="/drivetest" className="hover:text-ink transition-colors">Driver's Test</Link>
+          <div className="flex gap-6 text-sm text-ink/35">
+            <Link href="/drivers-test" className="hover:text-ink transition-colors">Driver&apos;s Test</Link>
             <Link href="/terms" className="hover:text-ink transition-colors">Terms</Link>
             <Link href="/privacy" className="hover:text-ink transition-colors">Privacy</Link>
             <Link href="mailto:hello@appointme.ca" className="hover:text-ink transition-colors">Contact</Link>
