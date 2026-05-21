@@ -34,6 +34,8 @@ interface OrderForm {
   timePref: string
 }
 
+type FormErrors = Partial<Record<keyof OrderForm, string>>
+
 const DEFAULT_FORM: OrderForm = {
   email: '', phone: '', licenceNumber: '', licenceExpiry: '',
   testClass: 'G2', locations: [], dateFrom: '', dateTo: '', timePref: 'any',
@@ -45,7 +47,7 @@ export default function OrderPage() {
   const [orderId, setOrderId] = useState<string | null>(null)
   const [clientSecret, setClientSecret] = useState<string | null>(null)
   const [feeText, setFeeText] = useState('$49')
-  const [errors, setErrors] = useState<Partial<OrderForm>>({})
+  const [errors, setErrors] = useState<FormErrors>({})
 
   const fee = form.testClass === 'G2' || form.testClass === 'M2' ? '$49' : '$59'
 
@@ -173,7 +175,7 @@ export default function OrderPage() {
 // ─── Step 1: Personal details ──────────────────────────────────────────────────
 
 function DetailsStep({ form, errors, update, onNext }: {
-  form: OrderForm; errors: Partial<OrderForm>
+  form: OrderForm; errors: FormErrors
   update: (f: keyof OrderForm, v: string) => void; onNext: () => void
 }) {
   return (
@@ -243,7 +245,7 @@ function DetailsStep({ form, errors, update, onNext }: {
 // ─── Step 2: Search preferences ───────────────────────────────────────────────
 
 function PreferencesStep({ form, errors, update, toggleLocation, onBack, onNext, fee }: {
-  form: OrderForm; errors: Partial<OrderForm>
+  form: OrderForm; errors: FormErrors
   update: (f: keyof OrderForm, v: string) => void
   toggleLocation: (loc: string) => void
   onBack: () => void; onNext: () => void; fee: string
