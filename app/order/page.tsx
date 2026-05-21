@@ -122,7 +122,7 @@ export default function OrderPage() {
       {/* Top nav */}
       <nav className="border-b border-ink/8 bg-paper/90 backdrop-blur-sm">
         <div className="max-w-2xl mx-auto px-6 h-14 flex items-center justify-between">
-          <Link href="/" className="font-display text-xl text-ink">DriveSlot</Link>
+          <Link href="/" className="font-display text-xl text-ink">AppointMe</Link>
           {step !== 'done' && (
             <div className="flex items-center gap-2">
               {steps.map((s, i) => (
@@ -312,7 +312,7 @@ function PreferencesStep({ form, errors, update, toggleLocation, onBack, onNext,
         <div className="p-4 rounded-xl bg-lime/15 border border-lime/25">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-ink">DriveSlot service fee</p>
+              <p className="text-sm font-medium text-ink">AppointMe service fee</p>
               <p className="text-xs text-ink/50 mt-0.5">Charged only when we successfully book your slot</p>
             </div>
             <p className="font-display text-2xl text-ink">{fee}</p>

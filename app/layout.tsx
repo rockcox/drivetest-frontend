@@ -21,12 +21,12 @@ const mono = DM_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'DriveSlot — Book Your Ontario Road Test Earlier',
-  description: 'We scan DriveTest.ca 24/7 and book your G2 or G road test the moment a cancellation appears. Pay only when we succeed.',
-  keywords: ['DriveTest Ontario', 'G2 road test booking', 'road test cancellation', 'Ontario driving test'],
+  title: 'AppointMe — Skip the Queue on Any Government Appointment',
+  description: 'We monitor government booking systems 24/7 and secure your appointment the moment a slot opens. Driving tests, passports, citizenship — pay only when we succeed.',
+  keywords: ['government appointments', 'appointment booking Canada', 'DriveTest booking', 'passport appointment', 'citizenship appointment'],
   openGraph: {
-    title: 'DriveSlot — Skip the Wait',
-    description: 'We find Ontario DriveTest cancellations for you. Pay only when we book.',
+    title: 'AppointMe — Your appointment, faster.',
+    description: 'Automated booking for government appointments across Canada. Pay only when we succeed.',
     type: 'website',
   },
 }

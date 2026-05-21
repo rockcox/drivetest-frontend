@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — DriveSlot',
+  title: 'Privacy Policy — AppointMe',
 }
 
 export default function PrivacyPage() {
@@ -10,7 +10,7 @@ export default function PrivacyPage() {
     <div className="min-h-screen bg-paper">
       <nav className="border-b border-ink/8 bg-paper/90 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
-          <Link href="/" className="font-display text-xl text-ink">DriveSlot</Link>
+          <Link href="/" className="font-display text-xl text-ink">AppointMe</Link>
           <Link href="/" className="text-sm text-ink/50 hover:text-ink transition-colors">← Back home</Link>
         </div>
       </nav>
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
               <li>Request deletion of your data (subject to legal retention requirements)</li>
               <li>Withdraw consent for non-essential data processing</li>
             </ul>
-            <p className="mt-3 text-sm">To exercise these rights, email <a href="mailto:privacy@driveslot.ca" className="text-ink underline underline-offset-2">privacy@driveslot.ca</a>. We will respond within 30 days.</p>
+            <p className="mt-3 text-sm">To exercise these rights, email <a href="mailto:privacy@appointme.ca" className="text-ink underline underline-offset-2">privacy@appointme.ca</a>. We will respond within 30 days.</p>
           </section>
 
           <section>
@@ -129,7 +129,7 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="font-display text-xl text-ink mb-3">8. Contact</h2>
-            <p className="text-sm">Privacy questions or requests: <a href="mailto:privacy@driveslot.ca" className="text-ink underline underline-offset-2">privacy@driveslot.ca</a></p>
+            <p className="text-sm">Privacy questions or requests: <a href="mailto:privacy@appointme.ca" className="text-ink underline underline-offset-2">privacy@appointme.ca</a></p>
           </section>
         </div>
       </div>
@@ -138,7 +138,7 @@ export default function PrivacyPage() {
         <div className="max-w-3xl mx-auto px-6 flex gap-6 text-sm text-ink/40">
           <Link href="/terms" className="hover:text-ink transition-colors">Terms</Link>
           <Link href="/privacy" className="hover:text-ink transition-colors font-medium text-ink/60">Privacy</Link>
-          <Link href="mailto:hello@driveslot.ca" className="hover:text-ink transition-colors">Contact</Link>
+          <Link href="mailto:hello@appointme.ca" className="hover:text-ink transition-colors">Contact</Link>
         </div>
       </footer>
     </div>

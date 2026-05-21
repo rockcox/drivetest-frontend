@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service — DriveSlot',
+  title: 'Terms of Service — AppointMe',
 }
 
 export default function TermsPage() {
@@ -10,7 +10,7 @@ export default function TermsPage() {
     <div className="min-h-screen bg-paper">
       <nav className="border-b border-ink/8 bg-paper/90 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
-          <Link href="/" className="font-display text-xl text-ink">DriveSlot</Link>
+          <Link href="/" className="font-display text-xl text-ink">AppointMe</Link>
           <Link href="/" className="text-sm text-ink/50 hover:text-ink transition-colors">← Back home</Link>
         </div>
       </nav>
@@ -23,13 +23,13 @@ export default function TermsPage() {
         <div className="prose prose-sm max-w-none space-y-8 text-ink/70 leading-relaxed">
 
           <section>
-            <h2 className="font-display text-xl text-ink mb-3">1. About DriveSlot</h2>
-            <p>DriveSlot is an independent third-party service that monitors the Ontario DriveTest.ca booking system for available road test appointment cancellations and books them on your behalf. We are not affiliated with, endorsed by, or connected to the Ontario Ministry of Transportation (MTO), DriveTest Inc., or any government authority.</p>
+            <h2 className="font-display text-xl text-ink mb-3">1. About AppointMe</h2>
+            <p>AppointMe is an independent third-party service that monitors the Ontario DriveTest.ca booking system for available road test appointment cancellations and books them on your behalf. We are not affiliated with, endorsed by, or connected to the Ontario Ministry of Transportation (MTO), DriveTest Inc., or any government authority.</p>
           </section>
 
           <section>
             <h2 className="font-display text-xl text-ink mb-3">2. Service Description</h2>
-            <p>When you place an order, DriveSlot will:</p>
+            <p>When you place an order, AppointMe will:</p>
             <ul className="list-disc pl-5 mt-2 space-y-1">
               <li>Monitor DriveTest.ca for cancellations matching your preferences</li>
               <li>Notify you when a matching slot is found</li>
@@ -58,7 +58,7 @@ export default function TermsPage() {
             <ul className="list-disc pl-5 space-y-1">
               <li>You must be the holder of the Ontario driver's licence you provide</li>
               <li>You must be eligible to take the test class you have selected</li>
-              <li>You must attend the appointment once booked — DriveSlot is not responsible for missed appointments</li>
+              <li>You must attend the appointment once booked — AppointMe is not responsible for missed appointments</li>
               <li>You must arrive with a roadworthy vehicle and valid identification</li>
               <li>You must provide accurate contact information to receive notifications</li>
             </ul>
@@ -66,20 +66,20 @@ export default function TermsPage() {
 
           <section>
             <h2 className="font-display text-xl text-ink mb-3">6. Licence Credentials</h2>
-            <p>You authorize DriveSlot to use your Ontario driver's licence number and expiry date solely for the purpose of logging into DriveTest.ca and booking an appointment on your behalf. Your licence number is encrypted at rest using AES-256 encryption and is permanently deleted from our systems once your appointment is confirmed.</p>
+            <p>You authorize AppointMe to use your Ontario driver's licence number and expiry date solely for the purpose of logging into DriveTest.ca and booking an appointment on your behalf. Your licence number is encrypted at rest using AES-256 encryption and is permanently deleted from our systems once your appointment is confirmed.</p>
             <p className="mt-2">We will never use your credentials for any other purpose, share them with third parties, or retain them beyond what is strictly necessary to complete your booking.</p>
           </section>
 
           <section>
             <h2 className="font-display text-xl text-ink mb-3">7. Limitations of Liability</h2>
-            <p>DriveSlot does not guarantee that a slot matching your preferences will be found within any specific timeframe. Availability depends entirely on cancellations by other DriveTest users, which we cannot control.</p>
-            <p className="mt-2">DriveSlot is not responsible for: changes to DriveTest.ca's systems that prevent automated access; your failure to attend an appointment; errors in the information you provide; or actions taken by MTO or DriveTest with respect to your appointment.</p>
+            <p>AppointMe does not guarantee that a slot matching your preferences will be found within any specific timeframe. Availability depends entirely on cancellations by other DriveTest users, which we cannot control.</p>
+            <p className="mt-2">AppointMe is not responsible for: changes to DriveTest.ca's systems that prevent automated access; your failure to attend an appointment; errors in the information you provide; or actions taken by MTO or DriveTest with respect to your appointment.</p>
             <p className="mt-2">Our maximum liability to you is limited to the service fee you paid for that specific order.</p>
           </section>
 
           <section>
             <h2 className="font-display text-xl text-ink mb-3">8. Changes to These Terms</h2>
-            <p>We may update these terms from time to time. Continued use of DriveSlot after changes are posted constitutes acceptance of the revised terms.</p>
+            <p>We may update these terms from time to time. Continued use of AppointMe after changes are posted constitutes acceptance of the revised terms.</p>
           </section>
 
           <section>
@@ -89,7 +89,7 @@ export default function TermsPage() {
 
           <section>
             <h2 className="font-display text-xl text-ink mb-3">10. Contact</h2>
-            <p>Questions about these terms? Email us at <a href="mailto:hello@driveslot.ca" className="text-ink underline underline-offset-2">hello@driveslot.ca</a>.</p>
+            <p>Questions about these terms? Email us at <a href="mailto:hello@appointme.ca" className="text-ink underline underline-offset-2">hello@appointme.ca</a>.</p>
           </section>
         </div>
       </div>
@@ -98,7 +98,7 @@ export default function TermsPage() {
         <div className="max-w-3xl mx-auto px-6 flex gap-6 text-sm text-ink/40">
           <Link href="/terms" className="hover:text-ink transition-colors font-medium text-ink/60">Terms</Link>
           <Link href="/privacy" className="hover:text-ink transition-colors">Privacy</Link>
-          <Link href="mailto:hello@driveslot.ca" className="hover:text-ink transition-colors">Contact</Link>
+          <Link href="mailto:hello@appointme.ca" className="hover:text-ink transition-colors">Contact</Link>
         </div>
       </footer>
     </div>

@@ -106,7 +106,7 @@ export default function StatusPage() {
       {/* Nav */}
       <nav className="border-b border-ink/8 bg-paper/90 backdrop-blur-sm sticky top-0 z-40">
         <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-          <Link href="/" className="font-display text-xl text-ink">DriveSlot</Link>
+          <Link href="/" className="font-display text-xl text-ink">AppointMe</Link>
           <div className="flex items-center gap-3">
             <StatusBadge status={order.status} />
             {isActive && (
